@@ -1,0 +1,37 @@
+def calculate_speed_of_light(n):
+    """
+    Calculate the speed of light in a medium given its refractive index.
+    
+    Parameters:
+    n (float): Refractive index of the medium.
+    
+    Returns:
+    float: Speed of light in the medium in meters per second.
+    """
+    speed_of_light_vacuum = 299792458  # Speed of light in vacuum in meters per second
+    speed_of_light_medium = speed_of_light_vacuum / n
+    return speed_of_light_medium
+
+def main():
+    while True:
+        try:
+            user_input = input("Введите показатель преломления среды (или 'q' для выхода): ")
+            if user_input.lower() == 'q':
+                break
+            
+            n = float(user_input)
+            if n <= 0:
+                print("Показатель преломления должен быть положительным числом больше нуля.")
+                continue
+            
+            speed_of_light = calculate_speed_of_light(n)
+            print(f"Скорость света в среде с показателем преломления {n} составляет примерно {speed_of_light:.2f} метров в секунду.")
+        
+        except ValueError:
+            print("Некорректный ввод. Пожалуйста, введите числовое значение для показателя преломления или 'q' для выхода.")
+        except KeyboardInterrupt:
+            print("\nПрограмма завершена.")
+            break
+
+if __name__ == "__main__":
+    main()
